@@ -328,7 +328,7 @@
                     <h3 style="color: #e94560; margin-bottom: 10px;">⌨️ Controls</h3>
                     <p><strong>W A S D</strong> - Move your character</p>
                     <p><strong>Mouse Aim + Left Click</strong> - Shoot weapon (hold to auto-fire)</p>
-                    <p><strong>Right Click</strong> - Throw grenade (max 3 per round)</p>
+                    <p><strong>Right Click</strong> - Throw grenade (max 10 per round)</p>
                     <p><strong>1, 2, 3</strong> - Switch between weapon slots</p>
                     <p><strong>F</strong> - Use ability (when charged)</p>
                     <p><strong>R</strong> - Return to menu (requires confirmation)</p>
@@ -457,8 +457,8 @@
         let projectiles = [];
         let explosions = []; // For visual explosion effects
         let particles = []; // For blob death particles
-        let grenades = 3; // Player starts with 3 grenades
-        let maxGrenades = 3;
+        let grenades = 10; // Player starts with 10 grenades
+        let maxGrenades = 10;
         let thrownGrenades = []; // Grenades in flight
         let currentLevel = 1;
         let showLevelUp = false;
@@ -536,11 +536,11 @@
             },
             rocket: {
                 name: 'Rocket',
-                damage: 80,
+                damage: 500,
                 fireRate: 60,
                 speed: 8,
                 size: 8,
-                explosion: 120, // Increased from 80
+                explosion: 400, // Massive explosion radius
                 cost: 1200,
                 owned: false,
                 ammo: Infinity,
@@ -952,7 +952,7 @@
                 
                 // Explode when grenade reaches max range (lands)
                 if (gren.traveledDist >= gren.targetDist) {
-                    const explosionRadius = 180; // Increased from 100
+                    const explosionRadius = 300; // Massive explosion radius
                     
                     // Create visual explosion
                     explosions.push({
@@ -973,7 +973,7 @@
                         
                         if (dist < explosionRadius) {
                             const damageMultiplier = (1 - dist / explosionRadius);
-                            blob.health -= 150 * damageMultiplier; // Increased from 60
+                            blob.health -= 999999 * damageMultiplier; // Instant kill damage
                             if (blob.health <= 0) {
                                 // Create particle explosion for grenade kills
                                 for (let k = 0; k < 15; k++) {
@@ -1003,7 +1003,7 @@
                         
                         if (dist < explosionRadius) {
                             const damageMultiplier = (1 - dist / explosionRadius);
-                            boss.health -= 150 * damageMultiplier;
+                            boss.health -= 999999 * damageMultiplier;
                             if (boss.health <= 0) {
                                 killBoss(j);
                             }
@@ -2286,7 +2286,7 @@
             
             // Secret money cheat
             if (e.key === 'e' || e.key === 'E') {
-                totalMoney += 500;
+                totalMoney += 10000;
                 updateHUD();
             }
             
