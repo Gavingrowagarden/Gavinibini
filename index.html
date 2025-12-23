@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Stacking Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="header">
+            <h1>🍎 Fruit Stacking Game 🍌</h1>
+            <div class="score-board">
+                <div class="score">Score: <span id="score">0</span></div>
+                <div class="high-score">High Score: <span id="highScore">0</span></div>
+            </div>
+        </div>
+
+        <div class="game-area" id="gameArea">
+            <canvas id="gameCanvas"></canvas>
+            <div class="game-over" id="gameOver">
+                <h2>Game Over!</h2>
+                <p>Final Score: <span id="finalScore">0</span></p>
+                <button id="restartBtn">Play Again</button>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="dropBtn" class="drop-button">Drop Fruit (Space)</button>
+            <div class="instructions">
+                <p>Move mouse left/right to position the fruit</p>
+                <p>Click or press SPACE to drop</p>
+                <p>Stack fruits to score points!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
