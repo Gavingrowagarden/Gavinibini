@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.game-container {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 2em;
+}
+
+.score-board {
+    display: flex;
+    justify-content: space-around;
+    background: #f0f0f0;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.score, .high-score {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #555;
+}
+
+.score span, .high-score span {
+    color: #667eea;
+}
+
+.game-area {
+    position: relative;
+    background: #e8f5e9;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+#gameCanvas {
+    display: block;
+    width: 100%;
+    background: linear-gradient(to bottom, #87CEEB 0%, #e8f5e9 100%);
+}
+
+.game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: none;
+}
+
+.game-over.show {
+    display: block;
+}
+
+.game-over h2 {
+    color: #d32f2f;
+    margin-bottom: 15px;
+    font-size: 2em;
+}
+
+.game-over p {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#restartBtn {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#restartBtn:hover {
+    background: #5568d3;
+    transform: scale(1.05);
+}
+
+.controls {
+    text-align: center;
+}
+
+.drop-button {
+    background: #4caf50;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.drop-button:hover {
+    background: #45a049;
+    transform: scale(1.05);
+}
+
+.drop-button:active {
+    transform: scale(0.95);
+}
+
+.instructions {
+    background: #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+    color: #666;
+}
+
+.instructions p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+@media (max-width: 600px) {
+    .game-container {
+        padding: 20px;
+    }
+
+    .header h1 {
+        font-size: 1.5em;
+    }
+
+    .score-board {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
