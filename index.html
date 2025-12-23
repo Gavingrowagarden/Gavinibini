@@ -1778,11 +1778,16 @@
         }
 
         function confirmReset() {
-            // Reset all progress
+            // Reset all game variables
             totalMoney = 0;
             money = 0;
+            kills = 0;
+            sessionKills = 0;
+            sessionMoney = 0;
             highScore = 0;
-            
+            gameTime = 0;
+            currentLevel = 1;
+
             // Reset all weapons
             for (let key in weapons) {
                 if (key !== 'pistol') {
@@ -1791,7 +1796,7 @@
             }
             weaponSlots = ['pistol', null, null];
             currentWeapon = 'pistol';
-            
+
             // Reset all abilities
             for (let key in abilities) {
                 abilities[key].owned = false;
@@ -1799,8 +1804,9 @@
             currentAbility = null;
             abilityCharge = 0;
             abilityReady = false;
-            
-            // Reset all upgrades
+            activeAbilityEffect = null;
+
+            // Reset all upgrades to initial values
             upgrades.maxHealth.value = 100;
             upgrades.maxHealth.cost = 50;
             upgrades.armor.value = 0;
@@ -1813,18 +1819,35 @@
             upgrades.critChance.cost = 150;
             upgrades.lifeSteal.value = 0;
             upgrades.lifeSteal.cost = 200;
-            
-            // Reset player stats
+
+            // Reset player stats to base values
             player.maxHealth = 100;
             player.health = 100;
             player.armor = 0;
             player.damage = 10;
             player.fireRate = 10;
-            player.critChance = 0;
-            player.lifeSteal = 0;
-            
+            player.speed = PLAYER_BASE_SPEED;
+
+            // Reset grenades
+            grenades = maxGrenades;
+
+            // Clear game state
+            blobs = [];
+            projectiles = [];
+            explosions = [];
+            particles = [];
+            thrownGrenades = [];
+            bosses = [];
+            bossSpawnedThisLevel = false;
+
+            // Hide confirmation dialog
             document.getElementById('resetConfirm').style.display = 'none';
+
+            // Update displays
+            document.getElementById('totalMoney').textContent = `Money: $${totalMoney}`;
             updateUpgradeScreen();
+            updateHUD();
+
             alert('All progress has been reset!');
         }
 
